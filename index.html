@@ -1,0 +1,832 @@
+Copy the code below into a file named index.html in your GitHub repository. It includes your full CV in its original section order, mobile-friendly styling, and Columbia blue accents. No additional files are needed.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#B9D9EB">
+  <meta name="description" content="Wendell Dave Dowrich — global insurance and retirement-services executive, board director, and Fellow of the Society of Actuaries.">
+  <title>Wendell Dave Dowrich | Executive &amp; Board Director</title>
+  <style>
+    :root {
+      --columbia: #b9d9eb;
+      --columbia-light: #eaf3f8;
+      --navy: #15334c;
+      --blue: #245b7e;
+      --ink: #243849;
+      --muted: #526675;
+      --paper: #f7f9fb;
+      --white: #ffffff;
+      --line: #dce5ec;
+      --radius: 18px;
+      --width: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-underline-offset: 4px; }
+    a:hover { color: var(--navy); }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 5px;
+    }
+    .container {
+      width: min(var(--width), calc(100% - 48px));
+      margin-inline: auto;
+    }
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -80px;
+      z-index: 100;
+      padding: 10px 18px;
+      color: var(--white);
+      background: var(--navy);
+      border-radius: 8px;
+    }
+    .skip-link:focus { top: 12px; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .97);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--columbia);
+      font-size: .76rem;
+      letter-spacing: .04em;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    nav a {
+      padding: 7px 12px;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 600;
+    }
+    nav a:hover,
+    nav a[aria-current="location"] {
+      color: var(--navy);
+      background: var(--columbia-light);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 84px 0 72px;
+      background: var(--columbia);
+      border-bottom: 1px solid #a4c7dd;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      right: -140px;
+      top: -160px;
+      border: 1px solid rgba(21, 51, 76, .15);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 65px rgba(255, 255, 255, .10),
+        0 0 0 130px rgba(255, 255, 255, .08);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .17em;
+    }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 {
+      max-width: 850px;
+      margin-bottom: 22px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 6.4vw, 5rem);
+      font-weight: 400;
+      line-height: 1.07;
+      letter-spacing: -.045em;
+    }
+    .hero-description {
+      max-width: 680px;
+      margin-bottom: 26px;
+      color: var(--navy);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin-bottom: 28px;
+      color: var(--navy);
+      font-size: .94rem;
+      font-style: normal;
+    }
+    .contact-line a { color: var(--navy); }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 46px;
+      padding: 10px 20px;
+      border: 1px solid var(--navy);
+      border-radius: 8px;
+      color: var(--white);
+      background: var(--navy);
+      text-decoration: none;
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .button:hover { color: var(--white); background: #234b69; }
+    .button.secondary {
+      color: var(--navy);
+      background: transparent;
+      border-color: rgba(21, 51, 76, .4);
+    }
+    .button.secondary:hover { background: rgba(255, 255, 255, .35); }
+    main { padding: 60px 0 80px; }
+    .cv-section + .cv-section { margin-top: 70px; }
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    .section-number {
+      color: var(--blue);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    h2 {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+    .profile-card,
+    .experience-card,
+    .board-card,
+    .education-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .profile-card {
+      padding: 34px 38px;
+      border-top: 4px solid var(--columbia);
+    }
+    .profile-card p:last-child { margin-bottom: 0; }
+    .experience-list { display: grid; gap: 22px; }
+    .experience-card { padding: 30px 34px; }
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    h3 {
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 1.08rem;
+      font-weight: 750;
+      line-height: 1.45;
+    }
+    .location {
+      margin: 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .date {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      color: var(--navy);
+      background: var(--columbia-light);
+      font-size: .8rem;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    h4 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+    .role-subtitle {
+      margin-bottom: 14px;
+      color: var(--blue);
+      font-size: .95rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .role-date {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: .84rem;
+      font-weight: 500;
+    }
+    .role + .role {
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+    .experience-card p { margin-bottom: 15px; }
+    .experience-card p:last-child { margin-bottom: 0; }
+    ul {
+      margin: 12px 0 0;
+      padding-left: 21px;
+    }
+    li {
+      padding-left: 5px;
+      margin-bottom: 9px;
+    }
+    li:last-child { margin-bottom: 0; }
+    li::marker { color: var(--blue); }
+    .compact .company-header {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .board-card {
+      padding: 30px;
+      border-top: 4px solid var(--columbia);
+    }
+    .board-card .date { margin-bottom: 18px; }
+    .board-card .role-subtitle { margin-bottom: 14px; }
+    .education-card { padding: 30px 34px; }
+    .degree + .degree {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .degree p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+    .credentials {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    .credentials ul { margin-top: 0; }
+    .site-footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .footer-inner p { margin: 0; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    @media (min-width: 1000px) {
+      .experience-card { margin-left: 36px; position: relative; }
+      .experience-card::before {
+        content: "";
+        position: absolute;
+        left: -37px;
+        top: 37px;
+        width: 10px;
+        height: 10px;
+        border: 3px solid var(--paper);
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 1px var(--columbia);
+      }
+      .experience-list {
+        position: relative;
+      }
+      .experience-list::before {
+        content: "";
+        position: absolute;
+        top: 40px;
+        bottom: 40px;
+        left: 4px;
+        width: 1px;
+        background: var(--line);
+      }
+    }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 145px; }
+      .container { width: calc(100% - 32px); }
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 0;
+      }
+      .brand-mark { width: 34px; height: 34px; }
+      nav { width: 100%; gap: 2px; }
+      nav a { padding: 6px 9px; font-size: .78rem; }
+      .hero { padding: 52px 0; }
+      .hero-description { max-width: 95%; }
+      main { padding-top: 40px; }
+      .cv-section + .cv-section { margin-top: 48px; }
+      .section-heading { gap: 12px; }
+      .profile-card,
+      .experience-card,
+      .board-card,
+      .education-card { padding: 24px; }
+      .company-header { flex-direction: column; gap: 12px; }
+      .board-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 380px) {
+      nav a { padding-inline: 6px; }
+      .profile-card,
+      .experience-card,
+      .board-card,
+      .education-card { padding: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media print {
+      @page { margin: 16mm; }
+      body { background: white; color: black; font-size: 10pt; line-height: 1.5; }
+      .site-header, .hero-actions, .site-footer, .skip-link { display: none; }
+      .container { width: 100%; }
+      .hero { padding: 0 0 20px; background: white; border-bottom: 1px solid #aaa; }
+      .hero::after { display: none; }
+      .eyebrow { margin-bottom: 8px; }
+      h1 { font-size: 30pt; margin-bottom: 12px; }
+      .hero-description { font-size: 11pt; margin-bottom: 12px; }
+      .contact-line { margin-bottom: 0; }
+      main { padding: 20px 0 0; }
+      h2 { font-size: 18pt; }
+      h3, h4 { break-after: avoid; }
+      .section-heading { break-after: avoid; margin-bottom: 14px; }
+      .cv-section + .cv-section { margin-top: 28px; }
+      .profile-card, .experience-card, .board-card, .education-card {
+        padding: 16px 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .experience-list { gap: 12px; }
+      .experience-list::before, .experience-card::before { display: none; }
+      .experience-card { margin-left: 0; }
+      .company-header { padding-bottom: 10px; margin-bottom: 12px; }
+      .board-grid { display: block; }
+      .board-card { break-inside: avoid; }
+      .date { background: transparent; padding: 0; }
+      a { color: black; text-decoration: none; }
+      li { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Wendell Dave Dowrich, back to top">
+        <span class="brand-mark" aria-hidden="true">WDD</span>
+        <span>W. Dave Dowrich</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#profile">Profile</a>
+        <a href="#experience">Experience</a>
+        <a href="#boards">Boards</a>
+        <a href="#education">Education</a>
+      </nav>
+    </div>
+  </header>
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Executive leadership · Insurance &amp; retirement</p>
+      <h1>Wendell Dave<br>Dowrich</h1>
+      <p class="hero-description">
+        Global insurance and retirement-services executive.
+        Board director. Actuary. More than 30 years of leadership
+        across businesses, markets and borders.
+      </p>
+      <address class="contact-line">
+        <span>Brooklyn, NY</span>
+        <a href="tel:+12037223051">203.722.3051</a>
+        <a href="mailto:wddowrich@gmail.com">wddowrich@gmail.com</a>
+      </address>
+      <div class="hero-actions">
+        <a class="button"
+           href="https://www.linkedin.com/in/wdowrich"
+           target="_blank"
+           rel="noopener noreferrer">Connect on LinkedIn</a>
+        <a class="button secondary" href="mailto:wddowrich@gmail.com">Get in touch</a>
+      </div>
+    </div>
+  </div>
+  <main id="main" class="container">
+    <section id="profile" class="cv-section" aria-labelledby="profile-title">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">01</span>
+        <h2 id="profile-title">Executive Profile</h2>
+      </div>
+      <div class="profile-card">
+        <p>
+          Global insurance and retirement-services executive with 30+ years
+          of leadership experience spanning CEO and C-suite management,
+          life and retirement, reinsurance, capital and balance-sheet
+          management, investments, actuarial, M&amp;A and investment banking.
+          Distinctive combination of enterprise leadership, deep insurance
+          and actuarial expertise, public-company governance and
+          capital-markets experience, with a track record of leading complex
+          businesses, transformations and transactions across the U.S. and
+          major international markets.
+        </p>
+        <p>
+          Currently Senior Executive Vice President &amp; Chief Financial
+          Officer of TIAA and Chair &amp; Co-CEO of Seven30 Re, with leadership
+          responsibilities spanning finance, actuarial, general account
+          investments, strategic venture capital, reinsurance and
+          balance-sheet solutions. Previously served as Interim CEO of
+          AIG International Life &amp; Retirement (now Corebridge) and
+          CFO &amp; Chief Financial Actuary of Institutional Markets,
+          Life &amp; Retirement (now Corebridge), providing direct leadership
+          experience within businesses that today form part of Corebridge.
+          Also served as CFO of Prudential Financial’s international
+          businesses and held senior insurance capital-markets and
+          risk-management leadership roles at Goldman Sachs.
+        </p>
+        <p>
+          Experienced public-company and financial-services board director,
+          currently serving on the boards of Scotiabank and VantageRisk,
+          with Audit, Risk and Corporate Governance committee experience.
+          Proven ability to engage effectively with boards, investors,
+          regulators and other critical stakeholders; build and lead
+          high-performing teams; optimize capital and risk-adjusted returns;
+          and translate complex financial, actuarial and strategic issues
+          into decisive business actions and sustainable long-term value
+          creation. Fellow of the Society of Actuaries with an MBA in Finance
+          from The Wharton School.
+        </p>
+      </div>
+    </section>
+    <section id="experience" class="cv-section" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">02</span>
+        <h2 id="experience-title">Professional Experience</h2>
+      </div>
+      <div class="experience-list">
+        <article class="experience-card">
+          <div class="company-header">
+            <div>
+              <h3>Teachers Insurance Association of America (TIAA)</h3>
+              <p class="location">USA</p>
+            </div>
+            <span class="date">2021–Present</span>
+          </div>
+          <h4>Senior Executive Vice President &amp; Chief Financial Officer</h4>
+          <p class="role-subtitle">Chair &amp; Co-CEO, Seven30 Re Companies</p>
+          <p>
+            Senior executive of the TIAA financial-services enterprise,
+            comprising one of the five largest U.S. insurance companies and
+            Nuveen, which, with its pending Schroders acquisition, will be a
+            top-10 global asset manager. Enterprise responsibilities encompass
+            finance, actuarial, general account investments, strategic venture
+            capital investing, procurement, reinsurance and balance-sheet
+            solutions.
+          </p>
+          <ul>
+            <li>Member of TIAA Executive Committee and Board member of TIAA India.</li>
+            <li>Lead finance, actuarial and general account investment functions and strategic venture capital investing; launched TIAA Ventures in 2023.</li>
+            <li>Chair &amp; Co-CEO of Seven30 Re’s Bermuda companies, encompassing Nuveen and TIAA balance-sheet solutions, sidecars and development of TIAA’s third-party annuity reinsurance business.</li>
+            <li>Lead TIAA’s global liability origination efforts.</li>
+            <li>Senior leadership responsibility across an institution spanning insurance, retirement, investment management and, until its 2023 divestiture, banking.</li>
+          </ul>
+        </article>
+        <article class="experience-card">
+          <div class="company-header">
+            <div>
+              <h3>Prudential Financial, Inc.</h3>
+              <p class="location">Japan</p>
+            </div>
+            <span class="date">2020–2021</span>
+          </div>
+          <h4>Chief Financial Officer, International Businesses</h4>
+          <p>
+            Led all financial aspects of Prudential Financial’s non-U.S.
+            businesses, one of the company’s two major SEC-reporting
+            segments, encompassing operations across 15 countries in Asia,
+            Latin America and Africa and approximately $3 billion of annual
+            run-rate pre-tax operating income.
+          </p>
+          <ul>
+            <li>Member of boards of several Japanese operating companies and the Prudential International Business Council, with oversight of the international business.</li>
+            <li>Member of multiple Prudential Financial operating and oversight committees.</li>
+            <li>Member of the executive steering committee responsible for Japan business transformation.</li>
+          </ul>
+        </article>
+        <article class="experience-card">
+          <div class="company-header">
+            <div>
+              <h3>AIG</h3>
+              <p class="location">USA &amp; Japan</p>
+            </div>
+            <span class="date">2013–2020</span>
+          </div>
+          <div class="role">
+            <h4>Chief Executive Officer (Interim), International Life &amp; Retirement (now Corebridge)</h4>
+            <span class="role-date">2019–2020</span>
+            <p>
+              CEO-level responsibility for international Life &amp; Retirement
+              businesses, including AIG Life (UK) and Laya Healthcare
+              (Ireland), while leading International Life &amp; Retirement’s
+              strategic growth agenda.
+            </p>
+            <ul>
+              <li>Initiated strategic review of all non-U.S. entities, resulting in a revised organizational, risk and governance structure to strengthen oversight by the Life &amp; Retirement Executive Team.</li>
+              <li>Led a cross-functional team of internal and external professionals through a major strategic transaction process.</li>
+            </ul>
+          </div>
+          <div class="role">
+            <h4>Chief Financial Officer &amp; Head of Corporate Administration, Japan, General Insurance</h4>
+            <span class="role-date">2015–2019</span>
+            <p class="role-subtitle">
+              Chief Financial Officer, Asia Pacific Region, General Insurance<br>
+              Chair and Board Member, multiple AIG holding, operating and non-insurance companies
+            </p>
+            <p>
+              Led the finance organization in Japan and the personal-lines
+              general insurance business throughout Asia Pacific, with
+              approximately 600 direct, matrix and indirect reports spanning
+              actuarial, capital management, controllership, FP&amp;A, finance
+              transformation, tax and treasury.
+            </p>
+            <ul>
+              <li>Led the divestiture of AIG’s Japan life operations, representing approximately $1 billion of assets.</li>
+              <li>Led a strategic review of the Japan business for the AIG Board of Directors, resulting in reaffirmation of AIG’s Japan strategy.</li>
+              <li>Led enterprise initiatives encompassing corporate real-estate rationalization, legal-entity simplification and implementation of global transformation programs.</li>
+              <li>Led the Asia holding-company Board, including independent directors, and regulatory engagement through multiple CEO transitions, contributing to improved regulatory ratings.</li>
+              <li>Served on multiple Board subcommittees.</li>
+            </ul>
+          </div>
+          <div class="role">
+            <h4>Chief Financial Officer &amp; Chief Financial Actuary, Institutional Markets, Life &amp; Retirement (now Corebridge)</h4>
+            <span class="role-date">2013–2015</span>
+            <p>
+              Led finance and actuarial functions, including pricing oversight,
+              for a business generating approximately $500 million of run-rate
+              pre-tax operating income, with $30 billion of assets under
+              management and $30 billion of synthetic GICs. Products included
+              pensions, structured settlements, high-net-worth life insurance,
+              corporate- and bank-owned life insurance, stable-value wraps
+              and guaranteed investment contracts.
+            </p>
+            <ul>
+              <li>Built management reporting incorporating source-of-earnings analytics and key performance indicators supporting monthly close, quarterly forecasting and three-year business planning.</li>
+              <li>Established pricing and new-product governance and evaluated profitability across product platforms, resulting in cessation of new business in one product line.</li>
+              <li>Led actuarial and finance work for global large pension buyout bids, each involving more than $1 billion of assets.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="experience-card">
+          <div class="company-header">
+            <div>
+              <h3>Goldman, Sachs &amp; Co.</h3>
+              <p class="location">New York, NY</p>
+            </div>
+            <span class="date">2007–2013</span>
+          </div>
+          <h4>Vice President, Risk &amp; Capital Markets, Financial Institutions Group</h4>
+          <p class="role-subtitle">
+            Co-Head, Insurance Debt Capital Markets/Americas |
+            Senior Member, Insurance Risk Management Team
+          </p>
+          <p>
+            Senior insurance investment banker advising life, non-life and
+            other financial institutions on capital, risk-management and
+            strategic financing matters.
+          </p>
+          <ul>
+            <li>Co-led the New Product function within Insurance Risk Management, including development of a capital-markets reinsurance business.</li>
+            <li>Co-headed the Insurance Debt Capital Markets business, with $15–20 million of run-rate revenues.</li>
+            <li>Led risk-management and debt-capital-markets relationship coverage for 25–30 insurance accounts across the U.S., Canada and Bermuda.</li>
+          </ul>
+        </article>
+        <article class="experience-card">
+          <div class="company-header">
+            <div>
+              <h3>Credit Suisse</h3>
+              <p class="location">New York, NY</p>
+            </div>
+            <span class="date">2004–2007</span>
+          </div>
+          <h4>Vice President, Insurance Solutions Group</h4>
+          <p>
+            Structured insurance-related asset-backed financial instruments
+            for global insurance and reinsurance markets.
+          </p>
+          <ul>
+            <li>Developed and marketed innovative products to leading global insurers and reinsurers.</li>
+            <li>Led a $500 million portfolio acquisition involving a full-company acquisition and transition.</li>
+            <li>Joint patent holder for the Credit Suisse Longevity Index, developed to facilitate trading of population mortality risk.</li>
+          </ul>
+        </article>
+        <article class="experience-card">
+          <div class="company-header">
+            <div>
+              <h3>Swiss Re</h3>
+              <p class="location">Armonk, NY</p>
+            </div>
+            <span class="date">1997–2004</span>
+          </div>
+          <div class="role">
+            <h4>Vice President, Head of Corporate Planning &amp; Analysis — Life &amp; Health, North America</h4>
+            <span class="role-date">2001–2004</span>
+          </div>
+          <div class="role">
+            <h4>Second Vice President, Head of Planning &amp; Analysis / Administrative Reinsurance</h4>
+            <span class="role-date">2000–2001</span>
+          </div>
+          <div class="role">
+            <h4>Assistant Vice President</h4>
+            <span class="role-date">1997–1999</span>
+          </div>
+        </article>
+        <article class="experience-card compact">
+          <div class="company-header">
+            <div>
+              <h3>London Reinsurance Group</h3>
+              <p class="location">Barbados &amp; Pennsylvania</p>
+            </div>
+            <span class="date">1994–1997</span>
+          </div>
+        </article>
+        <article class="experience-card compact">
+          <div class="company-header">
+            <div>
+              <h3>Towers Perrin</h3>
+              <p class="location">Toronto, Canada</p>
+            </div>
+            <span class="date">1989–1994</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="boards" class="cv-section" aria-labelledby="boards-title">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">03</span>
+        <h2 id="boards-title">Board Leadership</h2>
+      </div>
+      <div class="board-grid">
+        <article class="board-card">
+          <span class="date">2022–Present</span>
+          <h3>Scotiabank <span class="location">(TSX/NYSE: BNS)</span></h3>
+          <p class="role-subtitle">Board Director</p>
+          <ul>
+            <li>Member, Audit and Corporate Governance Committees.</li>
+            <li>Previously served on the Risk Committee.</li>
+          </ul>
+        </article>
+        <article class="board-card">
+          <span class="date">2023–Present</span>
+          <h3>VantageRisk</h3>
+          <p class="role-subtitle">Board Director</p>
+          <ul>
+            <li>Board member of insurer/reinsurer launched with $1 billion of private-equity capital from Carlyle and Hellman &amp; Friedman.</li>
+            <li>Member, Audit and Risk Committees.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section id="education" class="cv-section" aria-labelledby="education-title">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">04</span>
+        <h2 id="education-title">Education &amp; Professional Credentials</h2>
+      </div>
+      <div class="education-card">
+        <div class="degree">
+          <h3>The Wharton School, University of Pennsylvania</h3>
+          <p>MBA, Finance</p>
+        </div>
+        <div class="degree">
+          <h3>University of Toronto</h3>
+          <p>BSc, Actuarial Science &amp; Applied Statistics</p>
+        </div>
+        <div class="credentials">
+          <ul>
+            <li>Fellow, Society of Actuaries (FSA)</li>
+            <li>Member, American Academy of Actuaries</li>
+            <li>Associate, Canadian Institute of Actuaries</li>
+            <li>FINRA/NASD Series 7 &amp; 63 — Inactive</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Wendell Dave Dowrich · Brooklyn, NY</p>
+      <div class="footer-links">
+        <a href="mailto:wddowrich@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/wdowrich"
+           target="_blank"
+           rel="noopener noreferrer">LinkedIn</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Highlight the section currently being read.
+    // All content and navigation also work without JavaScript.
+    if ("IntersectionObserver" in window) {
+      const sections = document.querySelectorAll("main > section[id]");
+      const links = document.querySelectorAll('nav a[href^="#"]');
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (!visible.length) return;
+        const activeId = visible[0].target.id;
+        links.forEach((link) => {
+          if (link.getAttribute("href") === "#" + activeId) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }, {
+        rootMargin: "-15% 0px -65% 0px",
+        threshold: 0
+      });
+      sections.forEach((section) => observer.observe(section));
+    }
+  </script>
+</body>
+</html>
